@@ -1,0 +1,32 @@
+:root{
+    --color-primary: #BD1522;
+    --color-secondary: #1f1f1f;
+    --bg-color: #6f6f6f;
+}
+
+body{
+    background-size: contain; /* Ajustar la imagen para que se contenga dentro del área */
+    background-position: center; /* Centrar la imagen */
+    background-repeat: no-repeat; /* No repetir la imagen */
+    position: relative; /* Posición relativa para el pseudo-elemento */
+    height: 95vh; /* Altura del viewport para que ocupe toda la pantalla */
+    background-color: var(--bg-color);
+}
+
+.bg-primary{
+    background-color: var(--color-primary) !important;
+}
+
+.bg-secondary{
+    background-color: #1f1f1f  !important;
+}
+
+.container{
+    max-width: 1800px !important;
+}
+
+select:focus,
+input:focus{
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(189, 21, 34, 0.25) !important;
+}

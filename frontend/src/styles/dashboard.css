@@ -1,0 +1,141 @@
+@import "styles.css";
+
+/* Asegurar que el enlace "Más citas" sea negro */
+a {
+    color: black;
+    font-weight: bold;
+}
+.fc-event {
+    background-color: transparent !important;
+    border: none !important;
+    color: #000000;
+    transition: background-color 0.2s ease;
+}
+
+.fc-event:hover {
+    background-color: #f0f0f0 !important; /* Gris claro al pasar el ratón */
+    cursor: pointer;
+}
+
+
+/* Cambiar el color del texto de los días en el calendario */
+.fc-event,
+.fc-daygrid-day-top,
+.fc-col-header-cell-cushion,
+.fc-daygrid-day-number {
+    color: black !important; /* Cambia este valor al color que prefieras */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Cambiar el color del círculo azul */
+.fc-daygrid-event-dot {
+    background-color: black !important; /* Asegura que el color del círculo sea negro */
+}
+
+/* Cambiar el color de fondo del día actual en el calendario */
+.fc .fc-timegrid-col.fc-day-today,
+.fc-daygrid-day.fc-day-today {
+    background-color: #f5f5f5 !important; /* Cambia este valor al color que prefieras */
+}
+
+#calendar-container {
+    height: 80vh; /* Ajusta la altura según tus necesidades */
+    overflow: auto; /* Permite el desplazamiento dentro del contenedor */
+}
+
+.container-dashboard {
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* Media Queries para ajustar el diseño en diferentes tamaños de pantalla */
+@media (max-width: 1637px) {
+    .container-dashboard {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1567px) {
+    .container-dashboard {
+        width: 85%;
+    }
+}
+
+@media (max-width: 1430px) {
+    .btn-md-md {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    .container-dashboard {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1220px) {
+    .btn-md-md {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    .container-dashboard {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1112px) {
+    .btn-md-md {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+    }
+    .container-dashboard {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1005px) {
+    .btn-md-md {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+    }
+    .container-dashboard {
+        width: 95%;
+    }
+}
+
+@media (max-width: 993px) {
+    .btn-md-md {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+    }
+    .container-dashboard {
+        width: 95%;
+    }
+}
+
+@media (max-width: 902px) {
+    .d-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Tres columnas para botones */
+        gap: 1rem;
+    }
+    .btn-md-md {
+        padding: 0.5rem 1rem;
+        font-size: 0.6rem;
+    }
+    .container-dashboard {
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .fc-daygrid-day {
+        font-size: 1em; /* Tamaño de fuente más pequeño para pantallas pequeñas */
+        padding: 5px; /* Menos espaciado interno */
+    }
+}
+
+@media (max-width: 576px) {
+    .d-grid {
+        grid-template-columns: 1fr; /* Una columna para botones en pantallas muy pequeñas */
+    }
+}
