@@ -22,7 +22,7 @@ public class SuperAdminInitializer {
         if (userRepository.findByUsername("dealergestor") == null) {
             CompanyUserEntity superAdmin = new CompanyUserEntity();
             superAdmin.setUsername("dealergestor");
-            superAdmin.setPassword(passwordEncoder.encode("supersecurepassword"));
+            superAdmin.setPassword(passwordEncoder.encode("admin123"));
             superAdmin.setRole(CompanyUserEntity.Role.SUPER_ADMIN);
             superAdmin.setEnabled(true);
             userRepository.save(superAdmin);
