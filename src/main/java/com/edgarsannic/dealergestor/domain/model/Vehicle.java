@@ -27,5 +27,4 @@ public class Vehicle {
     private String model;
     private List<Repair> repairs;
     private Appointment appointment;
-    private Client client;
 }

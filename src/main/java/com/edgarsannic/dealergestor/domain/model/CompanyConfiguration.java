@@ -7,10 +7,10 @@
 
 package com.edgarsannic.dealergestor.domain.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Setter
@@ -18,8 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CompanyConfiguration {
 
-    private Long companyId;
-    private String nameCompany;
+    private Long companyConfigurationId;
     private String primaryColor;
     private String secondaryColor;
     private String logoPath;

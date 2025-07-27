@@ -7,25 +7,25 @@
 
 package com.edgarsannic.dealergestor.domain.model;
 
+import com.edgarsannic.dealergestor.domain.entity.CompanyUserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Repair {
+public class Message {
 
-    private Long repairId;
-    private String status;
-    private LocalDate date;
-    private List<Part> parts;
-    private CompanyUser operator;
-    private boolean isActive;
+    private Long messageId;
+    private CompanyUserEntity sender;
+    private CompanyUserEntity receiver;
+    private String content;
+    private LocalDateTime sentAt;
+    private boolean isRead;
 }

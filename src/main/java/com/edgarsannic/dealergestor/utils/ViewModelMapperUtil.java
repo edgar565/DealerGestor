@@ -43,7 +43,6 @@ public class ViewModelMapperUtil {
         viewModel.setRepairId(repair.getRepairId());
         viewModel.setStatus(repair.getStatus());
         viewModel.setDate(repair.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        viewModel.setPartViewModel(repair.getPart().stream().findFirst().map(this::toViewModel).orElse(null));
         viewModel.setOperator(toViewModel(repair.getOperator()));
         return viewModel;
     }
@@ -115,7 +114,6 @@ public class ViewModelMapperUtil {
         viewModel.setStatus(accident.getStatus());
         viewModel.setDate(accident.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         viewModel.setOperator(toViewModel(accident.getOperator()));
-        viewModel.setPartViewModel(accident.getPart().stream().findFirst().map(this::toViewModel).orElse(null));
         viewModel.setInsuranceCompany(accident.getInsuranceCompany());
         viewModel.setLocation(accident.getLocation());
         return viewModel;
@@ -131,7 +129,6 @@ public class ViewModelMapperUtil {
 
     public CompanyConfigurationViewModel toViewModel(CompanyConfiguration company) {
         CompanyConfigurationViewModel viewModel = new CompanyConfigurationViewModel();
-        viewModel.setNameCompany(company.getNameCompany());
         viewModel.setPrimaryColor(company.getPrimaryColor());
         viewModel.setSecondaryColor(company.getSecondaryColor());
         viewModel.setLogoPath(company.getLogoPath());
@@ -261,7 +258,6 @@ public class ViewModelMapperUtil {
 
     public CompanyConfiguration toModel(CompanyConfigurationPostViewModel companyConfigurationPostViewModel) {
         CompanyConfiguration model = new CompanyConfiguration();
-        model.setNameCompany(companyConfigurationPostViewModel.getCompanyName());
         model.setPrimaryColor(companyConfigurationPostViewModel.getPrimaryColor());
         model.setSecondaryColor(companyConfigurationPostViewModel.getSecondaryColor());
         model.setWhatsappApiKey(companyConfigurationPostViewModel.getWhatsappApiKey());

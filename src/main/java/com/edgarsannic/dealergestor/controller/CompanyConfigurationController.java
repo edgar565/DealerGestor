@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/company")
-@Tag(name = "Company Configuration", description = "Endpoints for company branding and general settings")
+@RequestMapping("/companyconfiguration")
+@Tag(name = "Company Configuration", description = "Endpoints for company general settings")
 public class CompanyConfigurationController {
 
     private final DealerGestorManager dealerGestorManager;

@@ -21,20 +21,21 @@ import java.util.List;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "client")
-public class ClientEntity {
+@Table(name = "company")
+public class CompanyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "client_id")
-    private Long clientId;
+    @Column(name = "company_id")
+    private Long companyId;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(nullable=false)
+    private String nameCompany;
 
-    @Column(name = "phone", nullable = false)
-    private String phone;
+    @OneToMany(mappedBy = "companyUserEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CompanyUserEntity> companyUserEntities;
 
-    @OneToMany(mappedBy = "clientEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<VehicleEntity> vehicleEntities;
+    @OneToOne
+    @JoinColumn(name = "company_configuration_id")
+    private CompanyConfigurationEntity companyConfiguration;
 }

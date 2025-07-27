@@ -1,5 +1,6 @@
 package com.edgarsannic.dealergestor.utils;
 
+import com.edgarsannic.dealergestor.DealerGestorManager;
 import com.edgarsannic.dealergestor.domain.entity.*;
 import com.edgarsannic.dealergestor.domain.model.*;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,8 @@ import java.util.stream.Collectors;
 @Component
 public class EntityMapperUtil {
 
+    private DealerGestorManager dealerGestorManager;
+
     public VehicleEntity toEntity(Vehicle model) {
         if (model == null) {
             return null;
@@ -21,6 +24,8 @@ public class EntityMapperUtil {
         entity.setLicensePlate(model.getLicensePlate());
         entity.setBrand(model.getBrand());
         entity.setModel(model.getModel());
+
+        dealerGestorManager.findAllClients();
 
         if (model.getClient() != null) {
             entity.setClientEntity(toClientEntity(model.getClient()));

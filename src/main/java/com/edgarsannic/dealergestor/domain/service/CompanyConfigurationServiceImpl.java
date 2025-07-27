@@ -41,13 +41,12 @@ public class CompanyConfigurationServiceImpl implements CompanyConfigurationServ
 //        String logoUrl = fileStorageService.storeFile(logoFile, "company-logos/" + companyConfiguration.getCompanyId());
 
         // 2) Carga la empresa
-        CompanyConfigurationEntity company = companyConfigurationRepository.findById(companyConfiguration.getCompanyId())
-                .orElseThrow(() -> new RuntimeException("Company not found: " + companyConfiguration.getCompanyId()));
+        CompanyConfigurationEntity company = companyConfigurationRepository.findById(companyConfiguration.getCompanyConfigurationId())
+                .orElseThrow(() -> new RuntimeException("Company not found: " + companyConfiguration.getCompanyConfigurationId()));
 
         // 3) Actualiza el campo logoPath
 
 //        company.setLogoPath(logoUrl);
-        company.setNameCompany(companyConfiguration.getNameCompany());
         company.setPrimaryColor(companyConfiguration.getPrimaryColor());
         company.setSecondaryColor(companyConfiguration.getSecondaryColor());
         company.setWhatsappApiKey(companyConfiguration.getWhatsappApiKey());

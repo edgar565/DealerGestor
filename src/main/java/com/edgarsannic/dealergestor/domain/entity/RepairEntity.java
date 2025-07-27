@@ -80,10 +80,7 @@ public class RepairEntity {
     @JsonIgnore
     private VehicleEntity vehicle;
 
-    @OneToMany(mappedBy = "repairEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PartEntity> partEntity = new ArrayList<>();
-
-    @OneToOne
-    @JoinColumn(name = "operator_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private CompanyUserEntity operator;
 }

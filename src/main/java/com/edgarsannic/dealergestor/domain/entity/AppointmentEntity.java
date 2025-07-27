@@ -42,8 +42,7 @@ public class AppointmentEntity {
         LARGA_DURACION
     }
 
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "vehicle_id", nullable = true)
-    @JsonIgnore
-    private VehicleEntity vehicle;
+    @OneToOne
+    @JoinColumn(name = "vehicle_id")
+    private VehicleEntity  vehicleEntity;
 }

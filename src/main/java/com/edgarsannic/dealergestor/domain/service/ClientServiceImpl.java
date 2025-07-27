@@ -75,4 +75,9 @@ public class ClientServiceImpl implements ClientService{
     public void deleteClient(Long id) {
         clientRepository.deleteById(id);
     }
+
+    @Override
+    public Client findClientByLicensePlate(String licensePlate) {
+        return clientRepository.findClientByLicensePlate(licensePlate);
+    }
 }

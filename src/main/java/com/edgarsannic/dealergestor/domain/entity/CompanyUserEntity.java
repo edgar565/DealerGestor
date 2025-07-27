@@ -7,6 +7,7 @@
 
 package com.edgarsannic.dealergestor.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,12 +22,12 @@ import java.util.List;
 @NoArgsConstructor
 
 @Entity
-@Table(name = "company_user")
+@Table(name = "user")
 public class CompanyUserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "company_user_id")
+    @Column(name = "user_id")
     private Long companyUserId;
 
     @Column(name = "username", nullable = false, unique = true)
@@ -51,4 +52,18 @@ public class CompanyUserEntity {
 
     @OneToMany(mappedBy = "companyUserEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<NoteEntity> noteEntities;
+
+    @OneToMany(mappedBy = "companyUserEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RepairEntity> repairEntities;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "company_id", nullable = true)
+    @JsonIgnore
+    private CompanyEntity companyEntity;
+
+    @OneToMany(mappedBy = "sender")
+    private List<MessageEntity> sentMessages;
+
+    @OneToMany(mappedBy = "receiver")
+    private List<MessageEntity> receivedMessages;
 }

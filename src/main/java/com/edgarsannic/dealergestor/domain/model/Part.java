@@ -57,5 +57,4 @@ public class Part {
     private LocalTime time10;
     private LocalTime time11;
     private LocalTime time12;
-    private Repair repair;
 }

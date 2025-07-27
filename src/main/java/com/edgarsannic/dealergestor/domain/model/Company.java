@@ -12,7 +12,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Setter
@@ -20,12 +19,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Repair {
+public class Company {
 
-    private Long repairId;
-    private String status;
-    private LocalDate date;
-    private List<Part> parts;
-    private CompanyUser operator;
-    private boolean isActive;
+    private Long companyId;
+    private String nameCompany;
+    private CompanyConfiguration companyConfiguration;
+    private List<CompanyUser> companyUsers;
 }

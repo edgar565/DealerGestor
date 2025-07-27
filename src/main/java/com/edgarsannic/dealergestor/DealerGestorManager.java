@@ -123,6 +123,10 @@ public class DealerGestorManager {
         return clientService.findClientByName(name);
     }
 
+    public Client findClientByLicensePlate(String licensePlate) {
+        return clientService.findClientByLicensePlate(licensePlate);
+    }
+
 
     /**
      * COMPANY USER

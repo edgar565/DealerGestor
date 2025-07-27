@@ -7,11 +7,9 @@ import { Button } from './ui/Button.jsx';
 import axios from 'axios';
 import { getApiUrl } from '../services/api.js';
 
-
 const NoteManagement = () => {
     const [notes, setNotes] = useState([]);
     const token = localStorage.getItem('token');
-
 
     useEffect(() => {
         fetchNotes();
@@ -19,12 +17,12 @@ const NoteManagement = () => {
 
     const fetchNotes = async () => {
         try {
-            const response = await axios.get(getApiUrl('/notes', {
-               headers:{
-                   'Authorization': `Bearer ${token}`,
-                   'Content-Type': 'application/json',
-               }
-            }))
+            const response = await axios.get(getApiUrl('/notes'), {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                }
+            });
             setNotes(response.data);
         } catch (error) {
             console.error('Error fetching notes:', error);
@@ -36,15 +34,14 @@ const NoteManagement = () => {
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData.entries());
 
-        const token = localStorage.getItem('token');
-
         try {
-            await axios.post(getApiUrl('/notes/save'), data, {
+            await axios.post(getApiUrl('/notes/save'), JSON.stringify(data), {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             });
+            event.target.reset();
             fetchNotes();
             document.querySelector('#noteFormModal .btn-close').click();
         } catch (error) {
@@ -54,7 +51,6 @@ const NoteManagement = () => {
 
     const confirmDelete = async () => {
         const id = document.getElementById('noteId').value;
-        const token = localStorage.getItem('token');
 
         try {
             await axios.delete(getApiUrl(`/notes/${id}`), {
@@ -70,14 +66,19 @@ const NoteManagement = () => {
         }
     };
 
-
     const leftButton = [
-        <Button data-bs-toggle="modal" data-bs-target="#noteFormModal">
+        <Button key="add" data-bs-toggle="modal" data-bs-target="#noteFormModal">
             <i className="fa-solid fa-plus me-2"></i>AÑADIR NOTA
         </Button>
     ];
 
     const headers = ['FECHA', 'TÍTULO', 'TEXTO', 'ACCIONES'];
+
+    // Añadir keys a cada nota para evitar el warning de React
+    const tableData = notes.map(note => ({
+        ...note,
+        key: note.id // necesario para evitar el warning de key
+    }));
 
     return (
         <div className="container">
@@ -101,7 +102,16 @@ const NoteManagement = () => {
                 </form>
             </Modal>
 
-            <Table headers={headers} data={notes} onDelete={confirmDelete} />
+            <Modal id="confirmModal" title="¿ESTÁS SEGURO DE ELIMINAR ESTA NOTA?">
+                <p id="noteInfo"></p>
+                <input type="hidden" id="noteId" />
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">CANCELAR</button>
+                    <button type="button" className="btn btn-danger" onClick={confirmDelete}>ELIMINAR</button>
+                </div>
+            </Modal>
+
+            <Table headers={headers} data={tableData} onDelete={confirmDelete} />
         </div>
     );
 };

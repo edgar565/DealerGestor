@@ -6,7 +6,7 @@ import Modal from './Modal';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getThemeConfig } from '../../utils/themeConfig';
-
+import { getApiUrl } from '../../services/api'; // Asegúrate de que este path es correcto
 
 
 const Calendar = () => {
@@ -34,11 +34,11 @@ const Calendar = () => {
     useEffect(() => {
         const fetchAppointments = async () => {
             try {
-                const response = await fetch('http://34.200.147.24:8080/appointments', {
-                   headers: {
-                       'Authorization': `Bearer ${token}`,
-                       'Content-Type': 'application/json',
-                   }
+                const response = await fetch(getApiUrl('/appointments'), {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    }
                 });
                 const data = await response.json();
                 const formattedEvents = data.map((appointment) => ({

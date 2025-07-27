@@ -19,16 +19,13 @@ import lombok.Setter;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "company")
+@Table(name = "company_configuration")
 public class CompanyConfigurationEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comapny_id")
-    private Long companyId;
-
-    @Column(nullable=false)
-    private String nameCompany;
+    @Column(name = "company_configuration_id")
+    private Long companyConfigurationId;
 
     @Column(name="primary_color")
     private String primaryColor;

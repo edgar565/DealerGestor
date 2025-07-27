@@ -25,5 +25,4 @@ public class Note {
     private String title;
     private String content;
     private LocalDateTime createdAt;
-    private CompanyUser companyUser;
 }

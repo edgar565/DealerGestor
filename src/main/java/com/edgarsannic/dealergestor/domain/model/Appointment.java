@@ -24,5 +24,4 @@ public class Appointment {
     private Long appointmentId;
     private LocalDateTime dateTime;
     private String task;
-    private Vehicle vehicle;
 }
