@@ -50,6 +50,9 @@ public class CompanyUserEntity {
     @Column(name = "enabled", nullable = false)
     private boolean enabled;
 
+    @Column(name = "hidden", nullable = false)
+    private boolean hidden;
+
     @OneToMany(mappedBy = "companyUserEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<NoteEntity> noteEntities;
 

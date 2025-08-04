@@ -7,6 +7,7 @@
 
 package com.edgarsannic.dealergestor.domain.repository;
 
+import com.edgarsannic.dealergestor.domain.entity.CompanyEntity;
 import com.edgarsannic.dealergestor.domain.entity.CompanyUserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,4 +16,7 @@ import org.springframework.stereotype.Repository;
 public interface CompanyUserRepository extends JpaRepository<CompanyUserEntity, Long> {
 
     CompanyUserEntity findByUsername(String username);
+    CompanyUserEntity findByUsernameAndCompanyEntity(String username, CompanyEntity company);
+    CompanyEntity findByNameCompany(String nameCompany);
+
 }
